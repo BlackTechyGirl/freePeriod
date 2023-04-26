@@ -19,7 +19,7 @@ public class MenstralCycleDates {
 
     public static List<LocalDate> getFlowDates(LocalDate lastPeriodDate, int cycleLength, int flowLength){
         LocalDate nextPeriodDate = lastPeriodDate.plusDays(cycleLength);
-        LocalDate flowStartDate = nextPeriodDate.minusDays(flowLength-1);
+        LocalDate flowStartDate = nextPeriodDate.minusDays(flowLength);
 
         flowDates = new ArrayList<LocalDate>();
         flowDates.add(nextPeriodDate);
@@ -28,7 +28,7 @@ public class MenstralCycleDates {
         return flowDates;
     }
     public static LocalDate getOvulationDate(LocalDate lastPeriodDate, int cycleLength, int flowLength){
-        LocalDate nextPeriodDate = lastPeriodDate.plusDays(cycleLength-flowLength);
+        LocalDate nextPeriodDate = lastPeriodDate.plusDays(cycleLength-1);
         return nextPeriodDate.minusDays(14);
     }
     public static List<LocalDate> getFertilityDates(LocalDate lastPeriodDate, int cycleLength, int flowLength){
@@ -53,7 +53,7 @@ public class MenstralCycleDates {
 
         nonFertileDates = new ArrayList<>();
         while (nonFertileStart.isBefore(nonFertileEnd.plusDays(1))){
-            nonFertileDates.add(nonFertileStart.plusDays(1));
+            nonFertileDates.add(nonFertileStart);
             nonFertileStart = nonFertileStart.plusDays(1);
         }
         return nonFertileDates;
