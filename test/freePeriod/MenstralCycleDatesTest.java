@@ -30,8 +30,8 @@ class MenstralCycleDatesTest {
 
     @Test
     void getOvulationDate() {
-        LocalDate expectedOvulationDate = LocalDate.of(2023, 4, 15);
-        LocalDate actualOvulationDate = MenstralCycleDates.getOvulationDate(lastPeriodDate, cycleLength);
+        LocalDate expectedOvulationDate = LocalDate.of(2023, 4, 14);
+        LocalDate actualOvulationDate = MenstralCycleDates.getOvulationDate(lastPeriodDate, cycleLength, flowLength);
         assertEquals(expectedOvulationDate, actualOvulationDate);
 
     }
@@ -52,7 +52,7 @@ class MenstralCycleDatesTest {
                 LocalDate.of(2023, 4, 19)
         );
 
-        List<LocalDate> actualFertilityDates = MenstralCycleDates.getFertilityDates(lastPeriodDate, cycleLength);
+        List<LocalDate> actualFertilityDates = MenstralCycleDates.getFertilityDates(lastPeriodDate, cycleLength, flowLength);
         assertEquals(expectedFertilityDates, actualFertilityDates);
 
     }
@@ -60,18 +60,11 @@ class MenstralCycleDatesTest {
     @Test
     void getNonFertileDates() {
         List<LocalDate> expectedDates = List.of(
-                LocalDate.of(2022, 4, 1),
-                LocalDate.of(2022, 4, 2),
-                LocalDate.of(2022, 4, 3),
-                LocalDate.of(2022, 4, 4),
-                LocalDate.of(2022, 4, 5),
-                LocalDate.of(2022, 4, 6),
-                LocalDate.of(2022, 4, 7),
-                LocalDate.of(2022, 4, 8),
-                LocalDate.of(2022, 4, 9),
-                LocalDate.of(2022, 4, 10),
-                LocalDate.of(2022, 4, 11),
-                LocalDate.of(2022, 4, 12)
+                LocalDate.of(2023, 4, 6),
+                LocalDate.of(2023, 4, 7),
+                LocalDate.of(2023, 4, 8),
+                LocalDate.of(2023, 4, 9),
+                LocalDate.of(2023, 4, 10)
         );
         List<LocalDate> actualNonFertileDates = MenstralCycleDates.getNonFertileDates(lastPeriodDate, cycleLength, flowLength);
         assertEquals(expectedDates, actualNonFertileDates);
