@@ -26,6 +26,7 @@ public class FreePeriodView {
             for (int i = 1; i <= 12; i++) {
                 List<LocalDate> flowDates = MenstralCycleDates.getFlowDates(lastPeriodDate, cycleLength, flowLength);
                 LocalDate ovulationDate = MenstralCycleDates.getOvulationDate(lastPeriodDate, cycleLength, flowLength);
+//                LocalDate ovulationDate1 = lastPeriodDate.plusDays(14);
                 List<LocalDate> fertileDates = MenstralCycleDates.getFertilityDates(lastPeriodDate, cycleLength, flowLength);
                 List<LocalDate> nonFertileDates = MenstralCycleDates.getNonFertileDates(lastPeriodDate, cycleLength, flowLength);
                 LocalDate flowEnds = flowDates.get(0).plusDays(flowLength-1);
@@ -41,7 +42,7 @@ public class FreePeriodView {
                 }
                 message.append("\nNon-fertile dates: \n");
                 for (LocalDate date : nonFertileDates) {
-                    message.append(date.format(formatter)).append("\n");
+                    message.append(date.format(formatter)).append(", ");
                 }
                 JOptionPane.showMessageDialog(null, message.toString(), "Menstrual Cycle Dates", JOptionPane.INFORMATION_MESSAGE);
                 lastPeriodDate = flowDates.get(0);
